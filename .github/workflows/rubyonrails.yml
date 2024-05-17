@@ -34,6 +34,9 @@ jobs:
           gem install bundler
           bundle install --jobs 4 --retry 3
 
+      - name: Set execute permission for bin/rails
+        run: chmod +x bin/rails
+        
       - name: Set up database
         env:
           RAILS_ENV: ci
