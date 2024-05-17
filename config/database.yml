@@ -23,13 +23,3 @@ test:
 production:
   <<: *default
   database: db/production.sqlite3
-
-# PostgreSQL for CI environment
-ci:
-  adapter: postgresql
-  encoding: unicode
-  database: anxiety_app_ci 
-  pool: 5
-  username: postgres
-  password: password
-  host: localhost
