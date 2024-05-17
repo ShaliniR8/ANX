@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_17_050049) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_17_050249) do
+  create_table "anxiety_levels", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "level"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_anxiety_levels_on_user_id"
+  end
+
   create_table "journal_entries", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title"
@@ -32,5 +41,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_17_050049) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "anxiety_levels", "users"
   add_foreign_key "journal_entries", "users"
 end
