@@ -40,6 +40,7 @@ jobs:
       - name: Set up database
         env:
           RAILS_ENV: ci
+          SECRET_KEY_BASE: $(ruby -rsecurerandom -e 'puts SecureRandom.hex(64)')
         run: |
           cp config/database.yml.ci config/database.yml
           bundle exec rails db:create
@@ -49,5 +50,6 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: ci
+          SECRET_KEY_BASE: $(ruby -rsecurerandom -e 'puts SecureRandom.hex(64)')
         run: |
           bundle exec rails test
